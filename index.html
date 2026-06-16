@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gizlilik Politikası — AsenkronNet Sales</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #555;
+    --accent: #1570D9;
+    --border: #e5e5e5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f0f12; --fg: #e8e8ea; --muted: #aaa; --border: #2a2a30; }
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 28px; }
+  h1 { font-size: 1.9rem; margin: 0 0 6px; }
+  h2 { font-size: 1.2rem; margin: 32px 0 10px; color: var(--accent); }
+  .meta { color: var(--muted); font-size: 0.9rem; }
+  ul { padding-left: 1.2rem; }
+  li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.95rem; }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: rgba(21, 112, 217, 0.08); font-weight: 600; }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; text-align: center; }
+  code { background: rgba(21, 112, 217, 0.08); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gizlilik Politikası</h1>
+  <p class="meta">
+    Ürün: <strong>AsenkronNet Sales</strong> (Android ve iOS mobil uygulaması)<br>
+    Yayıncı: <strong>Mecesoft Software A.Ş.</strong><br>
+    Yürürlük tarihi: 16 Haziran 2026 · Son güncelleme: 16 Haziran 2026
+  </p>
+</header>
+
+<p>
+  Bu gizlilik politikası, <strong>Mecesoft Software A.Ş.</strong> ("biz", "Mecesoft") tarafından
+  geliştirilen <strong>AsenkronNet Sales</strong> mobil uygulamasının ("Uygulama") kullanıcı
+  verilerini nasıl topladığını, işlediğini, sakladığını ve koruduğunu açıklar. Uygulamayı
+  yükleyerek ve kullanarak aşağıdaki uygulamaları kabul etmiş olursunuz.
+</p>
+
+<h2>1. Uygulamanın Niteliği</h2>
+<p>
+  AsenkronNet Sales, <strong>AsenkronNet ERP</strong> altyapısını kullanan işletmelerin saha
+  satış ekiplerine yönelik bir iş aracıdır. Uygulama son tüketici/B2C bir ürün değildir; işyeri
+  çalışanları kendi şirket hesabıyla giriş yaparak şirket sunucusundaki verileri görüntüler ve
+  işlem oluşturur. Bu Uygulama bağlamında <strong>veri sorumlusu, kullanım hesabınızı sağlayan
+  işveren/şirkettir</strong>; Mecesoft yalnızca yazılım sağlayıcıdır.
+</p>
+
+<h2>2. Topladığımız Verilere Genel Bakış</h2>
+<p>Uygulama yalnızca işlevsel amaçlarla aşağıdaki verileri işler:</p>
+<table>
+  <thead>
+    <tr><th>Veri Tipi</th><th>Kapsam</th><th>Saklandığı Yer</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kimlik bilgisi (kullanıcı adı, şifre)</td>
+      <td>Yalnızca giriş anında, kullanıcının kendi şirket sunucusuna gönderilir.</td>
+      <td>Cihazda saklanmaz; sadece giriş sonrası alınan oturum jetonu saklanır.</td>
+    </tr>
+    <tr>
+      <td>Oturum ve yenileme jetonu</td>
+      <td>API çağrılarını yetkilendirmek için.</td>
+      <td>Platforma özel donanım destekli güvenli alan: <strong>Android'de EncryptedSharedPreferences (Android Keystore)</strong>, iOS'ta Keychain.</td>
+    </tr>
+    <tr>
+      <td>Ürün ve müşteri (cari) listesi</td>
+      <td>Şirket sunucusundan çekilir; çevrimdışı çalışma için cihazda önbelleğe alınır.</td>
+      <td>Cihaz içi <strong>SQLite</strong> veritabanı (uygulama özel alanı).</td>
+    </tr>
+    <tr>
+      <td>Oluşturduğunuz işlem kayıtları (sipariş, fatura, tahsilat)</td>
+      <td>Gönderim öncesi taslak; gönderim sonrası durum bilgisi.</td>
+      <td>Cihaz içi SQLite. Onaylandığında şirket sunucusuna iletilir.</td>
+    </tr>
+    <tr>
+      <td>Kamera görüntüsü</td>
+      <td>Yalnızca barkod tarayıcı ekranı açıkken, gerçek zamanlı.</td>
+      <td><strong>Kaydedilmez, depolanmaz, hiçbir sunucuya gönderilmez.</strong></td>
+    </tr>
+    <tr>
+      <td>Uygulama ayarları</td>
+      <td>API Gateway adresi, seçili şirket adı, tanıtım durumu, barkod ses tercihi.</td>
+      <td>Cihaz içi tercih deposu (<code>SharedPreferences</code> / <code>UserDefaults</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. Toplamadığımız Veriler</h2>
+<p>Aşağıdakiler Uygulama tarafından <strong>kesinlikle toplanmaz, izlenmez veya işlenmez</strong>:</p>
+<ul>
+  <li>Reklam takip kimliği — Uygulama reklam göstermez ve takip yapmaz.</li>
+  <li>Konum verisi (GPS, hücre, IP konumu).</li>
+  <li>Rehber, takvim, fotoğraf galerisi, ses kayıtları.</li>
+  <li>Cihaz tanımlayıcıları (IMEI, MAC), mobil operatör bilgisi.</li>
+  <li>Sağlık, biyometrik veya özel nitelikli kişisel veri.</li>
+  <li>Üçüncü taraf analitik/izleme SDK'ları (Google Analytics, Firebase Analytics, Facebook SDK, Mixpanel vb. <strong>bulunmamaktadır</strong>).</li>
+</ul>
+
+<h2>4. Verilerin Aktarımı</h2>
+<p>
+  Uygulamanın iletişim kurduğu yegâne uç nokta, ayarlar ekranından
+  <strong>kullanıcının kendisi tarafından girilen API Gateway adresidir</strong>. Bu adres,
+  kullanıcının/işletmenin kendisine ait sunucudur (Mecesoft tarafından işletilmez ve burada
+  saklanan veriye Mecesoft erişemez). Tüm trafik <strong>HTTPS/TLS</strong> üzerinden, jeton tabanlı
+  yetkilendirme ile gerçekleştirilir. Mecesoft, Uygulama üzerinden bağımsız analitik veya telemetri
+  toplamaz; kullanıcı veriniz Mecesoft sunucularına gönderilmez.
+</p>
+
+<h2>5. Kamera İzni</h2>
+<p>
+  Uygulama, ürünleri barkodlarından bulabilmek için <strong>kamera erişimi</strong>
+  (<code>android.permission.CAMERA</code>) ister. Kamera yalnızca barkod tarayıcı ekranı açıkken
+  aktiftir. Barkod tanıma <strong>tamamen cihaz üzerinde</strong> (Google ML Kit, çevrimdışı) yapılır;
+  <strong>hiçbir görüntü kaydedilmez, fotoğraf çekilmez veya sunucuya gönderilmez</strong>. Yakalanan
+  tek veri okunan barkod karakter dizisidir ve yalnızca yerel veritabanında ürün eşleştirmek için
+  kullanılır. Barkod tanıma modeli, Google Play Hizmetleri aracılığıyla sağlanabilir/güncellenebilir.
+  Kamera iznini istediğiniz zaman cihaz ayarlarından kapatabilirsiniz.
+</p>
+
+<h2>6. Veri Saklama Süresi</h2>
+<ul>
+  <li><strong>Oturum jetonları:</strong> Çıkış yapıldığında veya jeton geçersizleşince silinir.</li>
+  <li><strong>Önbellek (ürünler, cariler):</strong> Yeni senkronizasyonla üzerine yazılır; çıkışta veya uygulama silindiğinde kaybolur.</li>
+  <li><strong>Bekleyen işlem kayıtları:</strong> Sunucuya başarıyla gönderilene dek tutulur; sonra silinebilir.</li>
+  <li><strong>Uygulamayı kaldırmak</strong> tüm yerel veriyi cihazdan siler.</li>
+</ul>
+
+<h2>7. Çocuklar</h2>
+<p>Uygulama 13 yaş altı kullanıcılara yönelik değildir; bilerek çocuklardan veri toplamayız.</p>
+
+<h2>8. Güvenlik</h2>
+<ul>
+  <li>Şifreniz cihazda saklanmaz; yalnızca giriş anında HTTPS ile sunucuya gönderilir.</li>
+  <li>Oturum jetonları platformun donanım destekli güvenli alanında (Android Keystore / iOS Keychain) şifreli saklanır.</li>
+  <li>Tüm sunucu trafiği TLS 1.2+ üzerinden gerçekleştirilir.</li>
+  <li>Yenileme jetonu süresi dolduğunda Uygulama kullanıcıyı otomatik olarak giriş ekranına yönlendirir.</li>
+</ul>
+
+<h2>9. KVKK Kapsamında Haklarınız</h2>
+<p>
+  6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) m. 11 uyarınca kişisel verilerinizin
+  işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini veya silinmesini isteme hakkına
+  sahipsiniz. Bu Uygulama bağlamında veri sorumlusu, kullanım hesabınızı sağlayan işveren/şirkettir;
+  veri taleplerinizi öncelikle ilgili şirkete iletmenizi rica ederiz.
+</p>
+
+<h2>10. AB / GDPR</h2>
+<p>
+  AB'deki kullanıcılar için Uygulamanın yegâne iletişim noktası işletmenizin ERP sunucusu olduğundan,
+  veri kontrolörü işveren şirketinizdir. Mecesoft yalnızca yazılım sağlayıcı sıfatıyla işlemcidir.
+</p>
+
+<h2>11. Üçüncü Taraf Bileşenler</h2>
+<p>
+  Uygulama reklam ağı veya analitik servis kullanmaz. Yalnızca yerleşik platform bileşenleri
+  (ağ, kamera, PDF, güvenli depolama) ve barkod tanıma için cihaz üzerinde çalışan <strong>Google
+  ML Kit</strong> bileşenini kullanır; ayrıca kullanıcının kendi şirket sunucusu ile iletişim kurar.
+</p>
+
+<h2>12. Politikadaki Değişiklikler</h2>
+<p>
+  Bu politika gerektiğinde güncellenebilir. Güncel sürüm her zaman bu sayfada yayımlanır;
+  "Son güncelleme" tarihi sayfa başında gösterilir.
+</p>
+
+<h2>13. İletişim</h2>
+<p>
+  Sorularınız ve veri talepleriniz için:<br>
+  <strong>Mecesoft Software A.Ş.</strong><br>
+  E-posta: <a href="mailto:destek@mecesoft.com">destek@mecesoft.com</a><br>
+  Web: <a href="https://mecesoft.com">https://mecesoft.com</a>
+</p>
+
+<footer>
+  © 2026 Mecesoft Software A.Ş. — Tüm Hakları Saklıdır.
+</footer>
+
+</body>
+</html>
